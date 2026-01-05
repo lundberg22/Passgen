@@ -49,3 +49,25 @@ elif(len(userInputPassword) > 15):
 
 else:
     print("Password too weak")
+
+while True:
+    retry = input("Do you want to try again? (y/n): ").lower()
+    if retry == 'y' or retry == 'yes':
+        userInputPassword = input("Enter your password: ")
+        isValid = IsValidPassword(userInputPassword)
+
+        if isValid:
+            print("Strong password")
+            break
+
+        elif(len(userInputPassword) < 8):
+            print("Password too short")
+
+        elif(len(userInputPassword) > 15):
+            print("Password too long")
+
+        else:
+            print("Password too weak")
+    else:
+        print("Exiting password checker. Goodbye!")
+        break
