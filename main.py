@@ -84,7 +84,7 @@ def password_flow() -> bool:
         user_input = input().lower()
  
         if user_input in ("y", "yes"):
-            print("\nGenerated Password: ----->", generate_password() "<-----")
+            print("\nGenerated Password: ----->", generate_password(), "<-----")
         else:
             print("Password lost to the depths.")
 
@@ -215,5 +215,6 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
         break
+
 
 
