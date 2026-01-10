@@ -4,7 +4,7 @@ import string
 
 print("\n ✩⁺₊✩☽⋆ Welcome to the secure password generator ⋆☾✩⁺₊✩ \n")
 
-#### Validate password, option 1 in menu
+#### Validate password strength, option 1 in menu
 def IsValidPassword(password):
 
     """Check the strength of the user's typed password.
@@ -30,7 +30,7 @@ def IsValidPassword(password):
                 upperCase = True
             elif(char.isdigit()):
                 number = True
-            elif(not char.isalnum()): # Checks if it's NOT a number or letter = it's a special character
+            elif(not char.isalnum()):
                 specialChar = True
 
         return lowerCase and upperCase and number and specialChar
@@ -144,3 +144,4 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
         break
+
