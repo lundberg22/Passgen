@@ -27,13 +27,13 @@ def IsValidPassword(password):
         specialChar = False 
 
         for char in password:
-            if(char.islower()):
+            if char.islower():
                 lowerCase = True
-            elif(char.isupper()):
+            elif char.isupper():
                 upperCase = True
-            elif(char.isdigit()):
+            elif char.isdigit():
                 number = True
-            elif(not char.isalnum()):
+            elif not char.isalnum():
                 specialChar = True
 
         return lowerCase and upperCase and number and specialChar
@@ -84,7 +84,7 @@ def password_flow() -> bool:
         user_input = input().lower()
  
         if user_input in ("y", "yes"):
-            print("Generated Password:", generate_password())
+            print("Generated Password: ----->", generate_password() "<-----")
         else:
             print("Password lost to the depths.")
 
@@ -92,7 +92,7 @@ def password_flow() -> bool:
         retry_input = input().lower()
  
         if retry_input  in ("y", "yes"):
-            print("Generated Password:", generate_password())
+            continue
         else:
             print("Returning to main menu.")
             return False
@@ -215,3 +215,4 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
         break
+
