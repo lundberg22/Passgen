@@ -1,4 +1,6 @@
 import questionary
+import random
+import string
 
 print("\n ✩⁺₊✩☽⋆ Welcome to the secure password generator ⋆☾✩⁺₊✩ \n")
 
@@ -28,14 +30,72 @@ def IsValidPassword(password):
                 upperCase = True
             elif(char.isdigit()):
                 number = True
-            elif(not char.isalnum()):
+            elif(not char.isalnum()): # Checks if it's NOT a number or letter = it's a special character
                 specialChar = True
 
         return lowerCase and upperCase and number and specialChar
     
     else:
         return False
-    
+
+##########################################################
+
+#### Generate strong password, option 2 in menu
+def generate_password(length: int = 12,
+                      use_uppercase: bool = True,
+                      use_lowercase: bool = True,
+                      use_digits: bool = True,
+                      use_special: bool = True
+    )    -> str:
+    """Generate a random password based on specified criteria.
+
+    At least one of each as follows:
+    - Upper case letter
+    - Lower case letter
+    - Number
+    - Special character
+
+    Remember to copy the password if you want to keep it.
+    """
+    character_pool = ""
+
+    if use_uppercase:
+        character_pool += string.ascii_uppercase
+    if use_lowercase:
+        character_pool += string.ascii_lowercase
+    if use_digits:
+        character_pool += string.digits
+    if use_special:
+        character_pool += string.punctuation
+
+    if not character_pool:
+        raise ValueError("At least one character type must be selected.")
+
+    password = ''.join(random.choice(character_pool) for _ in range(length))
+    return password
+
+def password_flow() -> bool:
+    while True:
+        print("Generating password...")
+        print("Would you like to see the generated password? (y/n): ")
+        user_input = input().lower()
+ 
+        if user_input in ("y", "yes"):
+            print("Generated Password:", generate_password())
+        else:
+            print("Password lost to the depths.")
+
+        print("New password? (y/n): ")
+        retry_input = input().lower()
+ 
+        if retry_input  in ("y", "yes"):
+            print("Generated Password:", generate_password())
+        else:
+            print("Returning to main menu.")
+            return False
+        
+###########################################################
+
 #### Menu
 while True:
 
@@ -75,10 +135,11 @@ while True:
                 break
 
     elif option == "✩ Generate a password":
-        print("Feature under development.")
+        password_flow()
 
     elif option == "✩ Password breach check":
-        print("Feature under development.")
+        generate_password()
+        password_flow()
             
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
