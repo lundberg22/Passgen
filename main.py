@@ -84,11 +84,11 @@ def password_flow() -> bool:
         user_input = input().lower()
  
         if user_input in ("y", "yes"):
-            print("Generated Password: ----->", generate_password() "<-----")
+            print("\nGenerated Password: ----->", generate_password() "<-----")
         else:
             print("Password lost to the depths.")
 
-        print("New password? (y/n): ")
+        print("\nNew password? (y/n): ")
         retry_input = input().lower()
  
         if retry_input  in ("y", "yes"):
@@ -113,8 +113,8 @@ has been leaked.
 
 def data_from_api(first_five_chars):
     """
-    This function sends the first five characters of the hashed password to HIBP API.
-    It receives a list of possible password hashes that matches.
+    Sends the first five characters of the hashed password to HIBP API.
+    Receives a list of possible password hashes that matches.
     """
 
     url = 'https://api.pwnedpasswords.com/range/' + first_five_chars
@@ -215,4 +215,5 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
         break
+
 
