@@ -8,7 +8,7 @@ import string
 print("\n ✩⁺₊✩☽⋆ Welcome to the secure password generator ⋆☾✩⁺₊✩ \n")
 
 #### Validate password strength, option 1 in menu
-def IsValidPassword(password):
+def is_valid_password(password):
 
     """Check the strength of the user's typed password.
 
@@ -182,10 +182,10 @@ while True:
     ).ask()
 
     if option == "✩ Check user generated password":
-        IsValidPassword(password="")
+        is_valid_password(password="")
         while True:
             userInputPassword = input("Enter your password: ")
-            isValid = IsValidPassword(userInputPassword)
+            isValid = is_valid_password(userInputPassword)
 
             if isValid:
                 print("Strong password! \n")
