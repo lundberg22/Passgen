@@ -1,3 +1,6 @@
+import requests
+import hashlib
+
 import questionary
 import random
 import string
@@ -96,6 +99,75 @@ def password_flow() -> bool:
         
 ###########################################################
 
+#### Password checker - HIBP API, option 3
+
+"""Check if, and how many times, the provided password has been leaked online through the
+haveibeenpwned.com (HIBP) API.
+
+This code will take a user input password, turn it into a SHA-1 hash and send the first and then last part
+of the hash to check whether it appears in leaked passwords. Then it will tell you if that password
+has been leaked.
+
+"""
+
+
+def data_from_api(first_five_chars):
+    """
+    This function sends the first five characters of the hashed password to HIBP API.
+    It receives a list of possible password hashes that matches.
+    """
+
+    url = 'https://api.pwnedpasswords.com/range/' + first_five_chars
+    result = requests.get(url)
+
+    if result.status_code != 200:
+        raise RuntimeError(f'Error: {result.status_code}. Please try again')
+
+    return result
+
+def leaked_password_count(result, rest_of_chars):
+    """
+    Receives result from the 'data_from_api' function. Sends latter part of the hashed password and sees
+    if there is a match. Returns how many times the password was leaked.
+    """
+
+    hashes = [line.split(':') for line in result.text.splitlines()]
+    #'h' as in 'hash' to avoid confusion
+    for h, count in hashes:
+        if h == rest_of_chars:
+            return count
+    return 0
+
+
+def check_password(password):
+    """
+    Coverts password to SHA-1, splits into two parts. Returns leak count.
+
+    """
+    hashed_password = hashlib.sha1(password.encode()).hexdigest().upper()
+    first_five_chars, rest_of_chars = hashed_password[:5], hashed_password[5:]
+
+    result = data_from_api(first_five_chars)
+    
+
+    return leaked_password_count(result, rest_of_chars)
+    
+    
+def password_for_you():
+    password = str(input('Enter the password you want to check: '))
+    leak_count = check_password(password)
+
+    if int(leak_count) > 0:
+        print(f'The password "{password}" was leaked {leak_count} times. You should probaly not use this password.')
+        input("Press enter to return to menu.")
+    else:
+        print(f'The password "{password}" has never been leaked.')
+        input("Press enter to return to menu.")
+
+    return
+
+###########################################################
+
 #### Menu
 while True:
 
@@ -138,10 +210,8 @@ while True:
         password_flow()
 
     elif option == "✩ Password breach check":
-        generate_password()
-        password_flow()
+        password_for_you()
             
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! \n")
         break
-
