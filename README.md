@@ -42,7 +42,7 @@ Run the program in python. Choose what you would like to do from the options in 
 Coming soon
 
 ## Flowchart
-Coming soon
+<img width="1297" height="909" alt="flowchart" src="https://github.com/user-attachments/assets/60472791-b1dc-4086-8f75-a38ecea4d3e9" />
 
 ## Disclaimer
 This program is created for educational purposes. While functional, it can be further developed and polished into a better version later down the line.
