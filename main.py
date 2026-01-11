@@ -8,7 +8,7 @@ import hashlib
 
 import questionary
 
-print("\n ✩⁺₊✩☽⋆ Welcome to the secure password generator ⋆☾✩⁺₊✩ \n")
+print("\n ✩⁺₊✩☽⋆ Welcome to the password security toolkit ⋆☾✩⁺₊✩ \n")
 
 #### Validate password strength, option 1 in menu
 def is_valid_password(password):
@@ -220,6 +220,7 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
