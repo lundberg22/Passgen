@@ -63,6 +63,17 @@ def generate_password(length: int = 12,
 
     Remember to copy the password if you want to keep it.
     """
+    password_chars = []
+
+    if use_uppercase:
+        password_chars.append(random.choice(string.ascii_uppercase))
+    if use_lowercase:
+        password_chars.append(random.choice(string.ascii_lowercase))
+    if use_digits:
+        password_chars.append(random.choice(string.digits))
+    if use_special:
+        password_chars.append(random.choice(string.punctuation))
+        
     character_pool = ""
 
     if use_uppercase:
@@ -74,11 +85,12 @@ def generate_password(length: int = 12,
     if use_special:
         character_pool += string.punctuation
 
-    if not character_pool:
-        raise ValueError("At least one character type must be selected.")
+    while len(password_chars) < length:
+        password_chars.append(random.choice(character_pool))
 
-    password = ''.join(random.choice(character_pool) for _ in range(length))
-    return password
+    random.shuffle(password_chars)
+
+    return "".join(password_chars)
 
 def password_flow() -> bool:
     while True:
@@ -220,6 +232,7 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
