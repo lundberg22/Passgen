@@ -103,7 +103,7 @@ def password_flow() -> bool:
         
 ###########################################################
 
-#### Password checker - HIBP API, option 3
+#### Password leak checker - HIBP API, option 3
 
 """Check if, and how many times, the provided password has been leaked online through the
 haveibeenpwned.com (HIBP) API.
@@ -219,6 +219,7 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
