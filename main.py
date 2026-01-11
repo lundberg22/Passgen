@@ -1,3 +1,5 @@
+import time
+
 import requests
 import hashlib
 
@@ -80,6 +82,8 @@ def generate_password(length: int = 12,
 def password_flow() -> bool:
     while True:
         print("Generating password...")
+        time.sleep(1)
+        
         print("Would you like to see the generated password? (y/n): ")
         user_input = input().lower()
  
@@ -213,8 +217,9 @@ while True:
         password_for_you()
             
     elif option == "✩ Exit":
-        print("Exiting program. Goodbye! \n")
+        print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
