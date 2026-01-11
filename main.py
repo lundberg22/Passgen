@@ -180,7 +180,7 @@ while True:
     choices=[
         "✩ Check user generated password",
         "✩ Generate a password",
-        "✩ Password breach check",
+        "✩ Check for password leaks",
         "✩ Exit"
     ]
     ).ask()
@@ -213,12 +213,13 @@ while True:
     elif option == "✩ Generate a password":
         password_flow()
 
-    elif option == "✩ Password breach check":
+    elif option == "✩ Check for password leaks":
         password_for_you()
             
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
