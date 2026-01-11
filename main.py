@@ -1,11 +1,12 @@
+import random
+import string
+
 import time
 
 import requests
 import hashlib
 
 import questionary
-import random
-import string
 
 print("\n ✩⁺₊✩☽⋆ Welcome to the secure password generator ⋆☾✩⁺₊✩ \n")
 
@@ -219,6 +220,7 @@ while True:
     elif option == "✩ Exit":
         print("Exiting program. Goodbye! ✩\n")
         break
+
 
 
 
