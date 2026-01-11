@@ -17,11 +17,12 @@ pip install requests
 For modules to work.
 ### Modules:
 ```
+import random
+import string
+import time
 import requests
 import hashlib
 import questionary
-import random
-import string
 ```
 
 ### General requirements
