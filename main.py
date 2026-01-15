@@ -235,9 +235,6 @@ while True:
 
 
 
-
-
-
-
+## Very pretty prints, nice structure, and easy to follow. Good work! /Tora
 
 
